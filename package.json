@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "description": "Understanding streaming of data from any source and of any type",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "file:text": "nodemon stream-from-file/stream-text.js",
     "gen:log-file": "node generate/generate-large-log-file.js",
     "gen:csv-file": "node generate/generate-csv-with-name.js",
+    "file:text": "nodemon stream-from-file/stream-text.js",
     "compress": "node stream-from-file/compress.js",
-    "batch": "node stream-from-file/batch.js"
+    "batch": "node stream-from-file/batch.js",
+    "backpressure": "node stream-from-file/backpressure.js"
   },
   "keywords": [
     "Stream",

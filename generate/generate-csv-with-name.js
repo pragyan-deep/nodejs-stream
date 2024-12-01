@@ -1,4 +1,4 @@
-const fs = require('fs');
+import { createWriteStream } from "node:fs";
 
 // Helper function to generate a random name
 const getRandomName = () => {
@@ -13,7 +13,7 @@ const getRandomName = () => {
 
 // Function to generate CSV data
 const generateCSV = (filename, recordCount) => {
-  const writeStream = fs.createWriteStream(filename);
+  const writeStream = createWriteStream(filename);
 
   // Write CSV header
   writeStream.write('name\n');

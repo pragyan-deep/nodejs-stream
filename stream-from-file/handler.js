@@ -1,11 +1,12 @@
-const fs = require('fs');
-const readline = require('readline');
+
+import {createReadStream} from "node:fs"
+import {createInterface} from "node:readline"
 
 const getReadLineInterface = (filePath) => {
-    const stream = fs.createReadStream(filePath, {encoding: 'utf8'});
-    return readline.createInterface({
+    const stream = createReadStream(filePath, {encoding: 'utf8'});
+    return createInterface({
         input: stream,
-        crlfDelay: Infinity
+        crlfDelay: Number.POSITIVE_INFINITY
     })
 }
 

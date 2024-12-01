@@ -1,12 +1,12 @@
-const fs = require('fs');
+import { createWriteStream } from "node:fs";
 
 function generateLargeLogFile(filePath, lines) {
-  const stream = fs.createWriteStream(filePath);
+  const stream = createWriteStream(filePath);
   for (let i = 0; i < lines; i++) {
     const isError = Math.random() > 0.8; // Randomly generate error lines ~20% chance
     const logLevel = isError ? 'ERROR' : 'INFO';
     const logMessage = `${logLevel} [${new Date().toISOString()}] This is log message #${i + 1}`;
-    stream.write(logMessage + '\n');
+    stream.write(`${logMessage}\n`);
   }
   stream.end(() => {
     console.log(`Large log file created at ${filePath}`);

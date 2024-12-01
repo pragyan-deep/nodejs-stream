@@ -1,13 +1,13 @@
-const fs = require("fs");
-const zlib = require("zlib");
+import { createReadStream, createWriteStream } from "node:fs";
+import { createGzip } from "node:zlib";
 
-const inputFile = fs.createReadStream("./files/large_server_logs.txt");
+const inputFile = createReadStream("./files/large_server_logs.txt");
 
-const outputFile = fs.createWriteStream(
+const outputFile = createWriteStream(
   "./files/large_server_logs_compress.txt.gz"
 );
 
-const gzlib = zlib.createGzip();
+const gzlib = createGzip();
 
 inputFile
   .pipe(gzlib)

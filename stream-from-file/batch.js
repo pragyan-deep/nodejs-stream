@@ -1,10 +1,10 @@
-const fs = require('fs');
-const mysql = require('mysql2');
-const csv = require('csv-parser');
-const { Transform } = require('stream');
+import { createReadStream } from 'node:fs';
+import { createPool } from 'mysql2';
+import csv from 'csv-parser';
+import { Transform } from 'node:stream';
 
 // Create a connection pool for MySQL to reuse connections
-const pool = mysql.createPool({
+const pool = createPool({
   host: 'localhost',
   user: 'root',
   password: 'password', // Replace with your MySQL root password
@@ -63,7 +63,7 @@ processCSVStream.insertBatch = function (callback) {
 };
 
 // Create a readable stream from the CSV file
-const inputFile = fs.createReadStream('./files/data.csv')
+const inputFile = createReadStream('./files/data.csv')
   .pipe(csv()) // Parse CSV data
   .pipe(processCSVStream); // Process data through the stream
 

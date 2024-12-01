@@ -17,18 +17,19 @@
 //     console.error('Error reading the file:', err);
 // });
 
-const fs = require('fs');
+import { readFileSync } from 'node:fs';
 
 function processLargeFile(filePath) {
   try {
     // Read the entire file into memory
-    const data = fs.readFileSync(filePath, 'utf8');
+    const data = readFileSync(filePath, 'utf8');
     
     // Split the file into lines
     const lines = data.split('\n');
     
     // Process each line
-    lines.forEach((line) => {
+    // biome-ignore lint/complexity/noForEach: <explanation>
+            lines.forEach((line) => {
       if (line.includes("ERROR")) {
         // Process the error line (e.g., print, save, etc.)
         console.log(line);

@@ -6,6 +6,11 @@ import { fileURLToPath } from "node:url";
 
 const upload = multer({ dest: "./files/" });
 
+/**
+ * Usually multers handles streaming internally.
+ * This is done to show how to use streaming with large file. 
+ * We can use transform to transform the large file
+ */
 const server = createServer((req, res) => {
   if (req.method === "POST") {
     upload.single("file")(req, res, (err) => {
